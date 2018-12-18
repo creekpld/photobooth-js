@@ -325,7 +325,7 @@ Photobooth = function( container )
 			/**
 			* Chrome
 			*/
-			eVideo.src = ( window.URL || window.webkitURL ).createObjectURL( oStream );
+			eVideo.srcObject = oStream;
 			fGetAnimFrame( fNextFrame );
 		}
 		catch( e )
