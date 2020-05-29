@@ -68,6 +68,16 @@ Photobooth = function( container )
 		{
 			eCrop.className = "crop";
 		}
+  };
+  
+  this.diableCropResize = function()
+	{
+    oResizeHandle.diableCropResize();
+  };
+  
+  this.enableCropResize= function()
+	{
+    oResizeHandle.enableCropResize();
 	};
 
 	this.crop = function(x,y,width,height)

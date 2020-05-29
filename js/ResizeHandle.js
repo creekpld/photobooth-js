@@ -1,9 +1,21 @@
 var ResizeHandle = function( eContainer, maxWidth, maxHeight )
 {
+	var _cropResizeEnabled = true;
+
 	this.setMax = function( width, height )
 	{
 		maxWidth = width;
 		maxHeight = height;
+	};
+
+	this.diableCropResize = function()
+	{
+		_cropResizeEnabled = false;
+  };
+  
+  this.enableCropResize= function()
+	{
+		_cropResizeEnabled = true;
 	};
 
 	this.getData = function()
@@ -118,16 +130,19 @@ var ResizeHandle = function( eContainer, maxWidth, maxHeight )
 	
 	oResizeDrag.onMove = function( x, y )
 	{
-		if( left + x + width < maxWidth && width + x > 18 )
+		if (_cropResizeEnabled)
 		{
-			tempWidth = width + x;
-			element.style.width = tempWidth + "px";
+			if( left + x + width < maxWidth && width + x > 18 )
+			{
+				tempWidth = width + x;
+				element.style.width = tempWidth + "px";
 
-		}
-		if( top + y + height < maxHeight && height + y > 18 )
-		{
-			tempHeight = height + y;
-			element.style.height = tempHeight + "px";
+			}
+			if( top + y + height < maxHeight && height + y > 18 )
+			{
+				tempHeight = height + y;
+				element.style.height = tempHeight + "px";
+			}
 		}
 	};
 
